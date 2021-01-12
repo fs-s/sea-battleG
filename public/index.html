@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+    <title>Battle Ship</title>
 </head>
 
 <body>
@@ -23,62 +24,68 @@
     <script src="/js/chat.js"></script>
     <script src="/js/ship.js"></script>
     <style>
-body {
-    background-color: black;
-}
+        body {
+            background-color: black;
+        }
 
-#container   {
-    display: flex;
-}
+        #message-container {
+            overflow-y: scroll;
+            height: 240px;
+        }
 
-.board {
-    margin: auto;
-    margin-top: 1em;
-    width: 30em;
-    height: 30em;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+        #container {
+            display: flex;
+        }
 
-}
-.cell {
-    width: 3em;
-    height: 3em;
-    border: 1px solid white;
-    text-align: center;
-    font-size: 1em;
-}
+        .board {
+            margin: auto;
+            margin-top: 1em;
+            width: 30em;
+            height: 30em;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
 
-.ship {
-    background-color: red;
-}
+        }
 
-.chat-name {
-    color: white;
-}
+        .cell {
+            width: 3em;
+            height: 3em;
+            border: 1px solid white;
+            text-align: center;
+            font-size: 1em;
+        }
 
-.game-name {
-    justify-content: center;
-    display: flex;
-    color: white;
-}
+        .ship {
+            background-color: red;
+        }
 
-li {
-    background-color: cornflowerblue;
-    color: white;
-    border-radius: 0.75rem;
-    margin: 10px 0px;
-    padding: 5px 10px;
-    list-style-type: none;
-    width: fit-content;
-    margin-right: 10px;
-}
+        .chat-name {
+            color: white;
+        }
 
-ul {
-    display: flex;
-    flex-direction: column;
-}
-</style>
+        .game-name {
+            justify-content: center;
+            display: flex;
+            color: white;
+        }
+
+        li {
+            background-color: cornflowerblue;
+            color: white;
+            border-radius: 0.75rem;
+            margin: 10px 0px;
+            padding: 5px 10px;
+            list-style-type: none;
+            width: fit-content;
+            margin-right: 10px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </body>
 
 </html>

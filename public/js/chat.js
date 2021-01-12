@@ -17,7 +17,12 @@ socket.on('chatMessage', res => {
         messageLi.innerText =res.message
     messageContainer.append(messageSender)
     messageContainer.append(messageLi)
+    messageContainer.scrollTop = messageContainer.scrollHeight;
+})
 
+socket.on('initGameBoard', res => {
+    console.log(res.humanGameBoard)
 })
 
 messageInput.focus
+messageContainer.scrollTop = messageContainer.scrollHeight;
