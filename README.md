@@ -1,2 +1,3 @@
 # sea-battleG
-Mäng
+Mäng mida me hakkame tegema
+
