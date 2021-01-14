@@ -1,0 +1,25 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#message-container {
+    overflow-y: scroll;
+    height: 240px;
+}
+
+li {
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 0.75rem;
+    margin: 10px 10px;
+    padding: 5px 10px;
+    list-style-type: none;
+    width: fit-content;
+    margin-right: 10px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
