@@ -30,4 +30,4 @@ server.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
 });
 
-app.use('/public/', express.static('./public/'))
+app.use('/', express.static('./public/'))

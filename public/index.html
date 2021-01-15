@@ -4,20 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/style.css">
     <title>Main page</title>
 </head>
 
 <body>
     <h1>Welcome to Sea Battle game</h1>
     <div class="game">
-        <button onclick="location.href='index1.html'" class="game-btn">Find a game</button>
+        <button onclick="location.href='/index1.html'" class="game-btn">Find a game</button>
     </div>
-    <h1 class="chat-name">Publick chat</h1>
+    <h1 class="chat-name">Public chat</h1>
     <ul id="message-container"></ul>
     <input class="input-text" id="message-box" type="text">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/public/chat.js"></script>
+    <script src="/js/chat.js"></script>
 </body>
 
 </html>
