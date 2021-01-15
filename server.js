@@ -10,7 +10,7 @@ const port = 8000
 const seabattle = require('./sea-battle')
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(__dirname + '/public/index.html')
 });
 
 io.on('connection', (socket) => {
@@ -30,4 +30,4 @@ server.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
 });
 
-app.use('/js', express.static('./public/js/'))
+app.use('/public/', express.static('./public/'))
