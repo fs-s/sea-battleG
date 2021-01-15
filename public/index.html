@@ -13,14 +13,41 @@
     <div class="game">
         <button onclick="location.href='index1.html'" class="game-btn">Find a game</button>
     </div>
-    <h1 class="chat-name">Chat</h1>
+    <h1 class="chat-name">Publick chat</h1>
     <ul id="message-container"></ul>
     <input class="input-text" id="message-box" type="text">
-    <script src="./js/chat.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
 </body>
 
 </html>
 <style>
+
+body {
+    background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
+}
+
+#message-container {
+    overflow-y: scroll;
+    height: 240px;
+}
+
+li {
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 0.75rem;
+    margin: 10px 0px;
+    padding: 5px 10px;
+    list-style-type: none;
+    width: fit-content;
+    margin-right: 10px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
     h1 {
     display: flex;
     justify-content: center;
