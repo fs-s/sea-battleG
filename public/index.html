@@ -4,88 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/style.css">
-    <title>Battle Ship</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Main page</title>
 </head>
 
 <body>
-    <h2 class="game-name">Battle Ships</h2>
-    <div id="container">
-        <div id="human-board" class="board" data-board-name="human">
-        </div>
-        <div id="machine-board" class="board" data-board-name="machine">
-        </div>
+    <h1>Welcome to Sea Battle game</h1>
+    <div class="game">
+        <button onclick="location.href='index1.html'" class="game-btn">Find a game</button>
     </div>
-
     <h1 class="chat-name">Chat</h1>
     <ul id="message-container"></ul>
     <input class="input-text" id="message-box" type="text">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/chat.js"></script>
-    <script src="/js/ship.js"></script>
-    <style>
-        body {
-            background-color: black;
-        }
-
-        #message-container {
-            overflow-y: scroll;
-            height: 240px;
-        }
-
-        #container {
-            display: flex;
-        }
-
-        .board {
-            margin: auto;
-            margin-top: 1em;
-            width: 30em;
-            height: 30em;
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-
-        }
-
-        .cell {
-            width: 3em;
-            height: 3em;
-            border: 1px solid white;
-            text-align: center;
-            font-size: 1em;
-        }
-
-        .ship {
-            background-color: red;
-        }
-
-        .chat-name {
-            color: white;
-        }
-
-        .game-name {
-            justify-content: center;
-            display: flex;
-            color: white;
-        }
-
-        li {
-            background-color: cornflowerblue;
-            color: white;
-            border-radius: 0.75rem;
-            margin: 10px 0px;
-            padding: 5px 10px;
-            list-style-type: none;
-            width: fit-content;
-            margin-right: 10px;
-        }
-
-        ul {
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
+    <script src="./js/chat.js"></script>
 </body>
 
 </html>
+<style>
+    h1 {
+    display: flex;
+    justify-content: center;
+}
+.game {
+    display: flex;
+    justify-content: center;
+    margin-top:50px;
+}
+button {
+    background-color: white;
+    border:none;
+    padding: 10px 20px;
+    transition-duration: 0,5s;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline;
+    border-radius: 10px;
+}
+.game-btn{
+    color: black;
+    border: 2px solid black;
+}
+.game-btn:hover{
+    background-color: gray;
+    color:white;
+}
+</style>
