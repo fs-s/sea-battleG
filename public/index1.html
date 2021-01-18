@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Ship</title>
 </head>
+
 <body>
     <h2 class="game-name">Battle Ships</h2>
-    <button onclick="location.href='/index.html'" class="game-btn">Leave game</button>
-
+    <div class="pede">
+        <button onclick="location.href='/index.html'" class="game-btn">Leave game</button>
+    </div>
     <div id="container">
         <div id="human-board" class="board" data-board-name="human">
         </div>
@@ -25,26 +27,33 @@
     <script src="/js/ship.js"></script>
 
     <style>
-button {
-    background-color: white;
-    border:none;
-    padding: 10px 20px;
-    transition-duration: 0,5s;
-    cursor: pointer;
-    font-size: 16px;
-    display: inline;
-    border-radius: 10px;
-}
-.game-btn{
-    justify-content: center;
-    display: flex;
-    color: black;
-    border: 2px solid black;
-}
-.game-btn:hover{
-    background-color: gray;
-    color:white;
-}
+        .pede {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            transition-duration: 0, 5s;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline;
+            border-radius: 10px;
+        }
+
+        .game-btn {
+            justify-content: center;
+            display: flex;
+            color: black;
+            border: 2px solid black;
+        }
+
+        .game-btn:hover {
+            background-color: gray;
+            color: white;
+        }
 
         body {
             background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
@@ -81,7 +90,7 @@ button {
         }
 
         .ship {
-            background-color: black ;
+            background-color: black;
         }
 
         .chat-name {
