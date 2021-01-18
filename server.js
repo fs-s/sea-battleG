@@ -7,7 +7,6 @@ const socketio = require('socket.io')
 const seaBattle = require('./sea-battle')
 const io = socketio(server)
 const port = 8000
-const seabattle = require('./sea-battle')
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html')
@@ -19,7 +18,7 @@ io.on('connection', (socket) => {
         io.emit('chatMessage', {'userid': socket.id, 'message': msg})
     })
 
-    io.emit('initGameBoard', {'humanGameBoard': seaBattle.human})
+    io.emit('initGameBoard', {'humanGameBoard': seaBattle.gameBoard.human})
     //console.log('user connected ' + socket.id)
     //socket.on('disconnect', () => {
     //    console.log('user ' + socket.id + ' disconnected');

@@ -10,6 +10,36 @@ messageInput.addEventListener('keyup', e => {
     }
 })
 
+socket.on('initGameBoard', res => {
+    const humanGameBoardDiv = document.querySelector('#human-board')
+
+    for ( let i = 0; i < 10; i++ ) {
+        for ( let j = 0; j < 10; j++ ) {
+            let cellDiv = document.createElement('div')
+            cellDiv.classList = 'cell'
+            cellDiv.dataset.row = i
+            cellDiv.dataset.col = j
+            if ( res.humanGameBoard[i][j].charAt(0) == 's' ) {
+                cellDiv.classList += ' ship'
+            }
+            humanGameBoardDiv.append(cellDiv)
+        }
+    }
+
+
+    const playerGameBoardDiv = document.querySelector('#machine-board')
+
+    for ( let i = 0; i < 10; i++ ) {
+        for ( let j = 0; j < 10; j++ ) {
+            let cellDiv = document.createElement('div')
+            cellDiv.classList = 'cell'
+            cellDiv.dataset.row = i
+            cellDiv.dataset.col = j
+            playerGameBoardDiv.append(cellDiv)
+        }
+    }
+})
+
 socket.on('chatMessage', res => {
     const messageSender = document.createElement('li')
     messageSender.innerText = res.userid + ': '

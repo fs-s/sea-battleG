@@ -9,8 +9,8 @@
 
 <body>
     <h2 class="game-name">Battle Ships</h2>
-    <div class="pede">
-        <button onclick="location.href='/index.html'" class="game-btn">Leave game</button>
+    <div class="game-btn">
+        <button onclick="location.href='/index.html'" class="leave-game-btn">Leave game</button>
     </div>
     <div id="container">
         <div id="human-board" class="board" data-board-name="human">
@@ -24,10 +24,9 @@
     <input class="input-text" id="message-box" type="text">
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
-    <script src="/js/ship.js"></script>
 
     <style>
-        .pede {
+        .game-btn {
             display: flex;
             justify-content: center;
         }
@@ -43,14 +42,7 @@
             border-radius: 10px;
         }
 
-        .game-btn {
-            justify-content: center;
-            display: flex;
-            color: black;
-            border: 2px solid black;
-        }
-
-        .game-btn:hover {
+        .leave-game-btn:hover {
             background-color: gray;
             color: white;
         }
