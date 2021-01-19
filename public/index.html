@@ -9,69 +9,37 @@
 
 <body>
     <h1>Welcome to Sea Battle game</h1>
-    <div class="game">
-        <button onclick="location.href='/index1.html'" class="game-btn">Find a game</button>
+    <div class="mainDiv">
+        <div class="user-list">
+            <h1>user</h1>
+        </div>
+        <div class="chat-box">
+            <h1>chat</h1>
+        </div>
     </div>
-    <h1 class="chat-name">Public chat</h1>
-    <ul id="message-container"></ul>
-    <input class="input-text" id="message-box" type="text">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/chat.js"></script>
 </body>
 
 </html>
 <style>
+    .chat-box {
+        position: absolute;
+        right: 0;
+        width: 800px;
+        height: 100%;
+        border: 3px solid blue;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
 
-body {
-    background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
-}
-
-#message-container {
-    overflow-y: scroll;
-    height: 240px;
-}
-
-li {
-    background-color: cornflowerblue;
-    color: white;
-    border-radius: 0.75rem;
-    margin: 10px 0px;
-    padding: 5px 10px;
-    list-style-type: none;
-    width: fit-content;
-    margin-right: 10px;
-}
-
-ul {
-    display: flex;
-    flex-direction: column;
-}
-
-    h1 {
-    display: flex;
-    justify-content: center;
-}
-.game {
-    display: flex;
-    justify-content: center;
-    margin-top:50px;
-}
-button {
-    background-color: white;
-    border:none;
-    padding: 10px 20px;
-    transition-duration: 0,5s;
-    cursor: pointer;
-    font-size: 16px;
-    display: inline;
-    border-radius: 10px;
-}
-.game-btn{
-    color: black;
-    border: 2px solid black;
-}
-.game-btn:hover{
-    background-color: gray;
-    color:white;
-}
+    .user-list {
+        position: absolute;
+        left: 0;
+        width: 400px;
+        height: 100%;
+        border: 3px solid red;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
 </style>

@@ -4,6 +4,7 @@ const messageContainer = document.querySelector('#message-container')
 const messageInput = document.querySelector('#message-box')
 
 messageInput.addEventListener('keyup', e => {
+    console.log(e)
     if ( e.key == 'Enter' ) {
         socket.emit('chatMessage', messageInput.value)
         messageInput.value = ' '
@@ -11,7 +12,7 @@ messageInput.addEventListener('keyup', e => {
 })
 
 socket.on('initGameBoard', res => {
-    const humanGameBoardDiv = document.querySelector('#human-board')
+    const humanGameBoardDiv = document.querySelector('#player1-board')
 
     for ( let i = 0; i < 10; i++ ) {
         for ( let j = 0; j < 10; j++ ) {
@@ -27,7 +28,7 @@ socket.on('initGameBoard', res => {
     }
 
 
-    const playerGameBoardDiv = document.querySelector('#machine-board')
+    const playerGameBoardDiv = document.querySelector('#player2-board')
 
     for ( let i = 0; i < 10; i++ ) {
         for ( let j = 0; j < 10; j++ ) {
