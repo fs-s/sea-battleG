@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>User Login</title>
+  </head>
+  <body>
+    <div class="flex-center">
+        <div class="login-card">
+          <form class="login-form">
+            <h1>Log in</h1>
+
+            <div class="form-group">
+              <label for="email">Username</label>
+              <input type="text" id="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password">
+            </div>
+            <button onclick="location.href='/index.html'">Sign up</button>
+          </form>
+        </div>
+      </div>
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    jQuery(document).ready(function ($) {
+      var email, pass;
+      $("#submit").click(function () {
+        username = $("#username").val();
+        password = $("#password").val();
+$.post("/login", { username: username, password: password }, function (
+          data
+        ) {
+          if (data === "success") {
+            window.location.href = "/";
+          }
+        });
+      });
+    });
+  </script>
+</html>
+<style>
+    body {
+        background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
+        padding-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+    h1 {
+        margin-top: 0;
+        margin-bottom: 1em;
+        font-size: 3em;
+        letter-spacing: -2px;
+      }
+
+      button {
+        padding: 20px;
+        background-color: #42b983;
+        border: none;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button :hover {
+        background-color: #42b96a;
+      }
+
+      .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+      }
+
+      input {
+      border: none;
+      border-bottom: 1px solid #afafaf;
+      padding: 10px 5px;
+    }
+
+    .login-card {
+      width: 300px;
+      background: white;
+      box-shadow: 0 18px 30px rgba(0,0,0,0.06);
+      padding: 3rem;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .form-group input:focus {
+    outline: none;
+    border-bottom-color: #42b983;
+    background-color: #f7f7f7;
+  }
+</style>
