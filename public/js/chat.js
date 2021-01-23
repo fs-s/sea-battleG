@@ -12,38 +12,39 @@ messageInput.addEventListener('keyup', e => {
 })
 
 socket.on('initGameBoard', res => {
-    const humanGameBoardDiv = document.querySelector('#player1-board')
-
-    for ( let i = 0; i < 10; i++ ) {
-        for ( let j = 0; j < 10; j++ ) {
-            let cellDiv = document.createElement('div')
-            cellDiv.classList = 'cell'
-            cellDiv.dataset.row = i
-            cellDiv.dataset.col = j
-            if ( res.humanGameBoard[i][j].charAt(0) == 's' ) {
-                cellDiv.classList += ' ship'
-            }
-            humanGameBoardDiv.append(cellDiv)
-        }
-    }
-
 
     const playerGameBoardDiv = document.querySelector('#player2-board')
-
-    for ( let i = 0; i < 10; i++ ) {
-        for ( let j = 0; j < 10; j++ ) {
-            let cellDiv = document.createElement('div')
-            cellDiv.classList = 'cell'
-            cellDiv.dataset.row = i
-            cellDiv.dataset.col = j
-            playerGameBoardDiv.append(cellDiv)
+    const humanGameBoardDiv = document.querySelector('#player1-board')
+    if (humanGameBoardDiv != null )  {
+        for ( let i = 0; i < 10; i++ ) {
+            for ( let j = 0; j < 10; j++ ) {
+                let cellDiv = document.createElement('div')
+                cellDiv.classList = 'cell'
+                cellDiv.dataset.row = i
+                cellDiv.dataset.col = j
+                if ( res.humanGameBoard[i][j].charAt(0) == 's' ) {
+                    cellDiv.classList += ' ship'
+                }
+                humanGameBoardDiv.append(cellDiv)
+            }
+        }
+        for ( let i = 0; i < 10; i++ ) {
+            for ( let j = 0; j < 10; j++ ) {
+                let cellDiv = document.createElement('div')
+                cellDiv.classList = 'cell'
+                cellDiv.dataset.row = i
+                cellDiv.dataset.col = j
+                playerGameBoardDiv.append(cellDiv)
+            }
         }
     }
+
+
 })
 
 socket.on('chatMessage', res => {
     const messageSender = document.createElement('li')
-    messageSender.innerText = res.userid + ': '
+    messageSender.innerText = res.socketId + ': '
         const messageLi = document.createElement('li')
         messageLi.innerText =res.message
     messageContainer.append(messageSender)
@@ -57,3 +58,8 @@ socket.on('initGameBoard', res => {
 
 messageInput.focus
 messageContainer.scrollTop = messageContainer.scrollHeight;
+
+const newGameBtn = document.getElementById('newGame')
+newGameBtn.addEventListener("click", event => {
+    socket.emit('newGame', '123')
+})

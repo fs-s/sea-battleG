@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <button class="leave-game-btn" id="newGame">Leave game</button>
     <h1>Welcome to Sea Battle game</h1>
     <div class="mainDiv">
         <div class="user-list">
@@ -15,12 +16,41 @@
         </div>
         <div class="chat-box">
             <h1>chat</h1>
+            <ul id="message-container"></ul>
+            <input class="input-text" id="message-box" type="text">
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="/public/js/chat.js"></script>
         </div>
     </div>
 </body>
 
 </html>
 <style>
+    body {
+        background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
+    }
+
+    #message-container {
+        overflow-y: scroll;
+        height: 240px;
+    }
+
+    li {
+        background-color: cornflowerblue;
+        color: white;
+        border-radius: 0.75rem;
+        margin: 10px 0px;
+        padding: 5px 10px;
+        list-style-type: none;
+        width: fit-content;
+        margin-right: 10px;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
     .chat-box {
         position: absolute;
         right: 0;
