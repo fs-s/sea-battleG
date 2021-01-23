@@ -74,7 +74,7 @@ app.use(session({
 }))
 
 io.on('connection', (socket) => {
-    socket.on('chatMessage', msg => {           
+    socket.on('chatMessage', msg => {
         console.log(socket.id + ': ' + msg)
         io.emit('chatMessage', {'userid': socket.id, 'message': msg})
     })
