@@ -26,27 +26,27 @@ const RedisStore = connectRedis(session);
 
 //Configure redis client
 const redisClient = redis.createClient({
-  host: 'localhost',
-  port: 6379
+    host: 'localhost',
+    port: 6379
 })
 
 redisClient.on('error', function (err) {
-  console.log('Could not establish a connection with redis. ' + err);
+    console.log('Could not establish a connection with redis. ' + err);
 });
 redisClient.on('connect', function (err) {
-  console.log('Connected to redis successfully');
+    console.log('Connected to redis successfully');
 });
 
 const sessionMiddleware = session({
-  store: new RedisStore({ client: redisClient }),
-  secret: 'secret$%^134',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-      secure: false, // if true only transmit cookie over https
-      httpOnly: false, // if true prevent client side JS from reading the cookie
-      maxAge: 1000 * 60 * 60 * 24 // session max age in miliseconds
-  }
+    store: new RedisStore({ client: redisClient }),
+    secret: 'secret$%^134',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false, // if true only transmit cookie over https
+        httpOnly: false, // if true prevent client side JS from reading the cookie
+        maxAge: 1000 * 60 * 60 * 24 // session max age in miliseconds
+    }
 });
 
 app.use(sessionMiddleware);
@@ -55,33 +55,39 @@ io.use((socket, next) => {
     sessionMiddleware(socket.request, {}, next);
 });
 
+app.get("/login", (req, res) => {
+    res.sendFile(__dirname + "/public/login.html");
+});
+
+
+
 app.get("/", (req, res) => {
-  sess = req.session;
-  if (sess.username && sess.password) {
-      sess = req.session;
-      if (sess.username) {
-        res.sendFile(__dirname + '/public/index.html');
-      }
-  } else {
-      res.sendFile(__dirname + "/public/login.html");
-  }
+    sess = req.session;
+    if (sess.username && sess.password) {
+        sess = req.session;
+        if (sess.username) {
+            res.sendFile(__dirname + '/public/index.html');
+        }
+    } else {
+        res.sendFile(__dirname + "/public/login.html");
+    }
 });
 
 app.post("/login", (req, res) => {
-  sess = req.session;
-  sess.username = req.body.username
-  sess.password = req.body.password
-  // add username and password validation logic here if you want. If user is authenticated send the response as success
-  res.end("success")
+    sess = req.session;
+    sess.username = req.body.username
+    sess.password = req.body.password
+    // add username and password validation logic here if you want. If user is authenticated send the response as success
+    res.end("success")
 });
 
 app.get("/logout", (req, res) => {
-  req.session.destroy(err => {
-      if (err) {
-          return console.log(err);
-      }
-      res.redirect("/")
-  });
+    req.session.destroy(err => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect("/")
+    });
 });
 
 io.on('connection', (socket) => {
@@ -92,15 +98,15 @@ io.on('connection', (socket) => {
     io.emit('connection', socket.id);
     socket.on('chatMessage', (msg) => {
         io.emit('chatMessage', {
-            socketId:socket.id, message:msg
+            socketId: socket.id, message: msg
         });
     });
-    io.emit('initGameBoard', {'humanGameBoard': seaBattle.gameBoard.human})
-    io.on('newGame', (p)=>{
-        console.log(p)  
-        io.emit('initGameBoard', {'humanGameBoard': seaBattle.gameBoard.human})
+    io.emit('initGameBoard', { 'humanGameBoard': seaBattle.gameBoard.human })
+    io.on('newGame', (p) => {
+        console.log(p)
+        io.emit('initGameBoard', { 'humanGameBoard': seaBattle.gameBoard.human })
     })
 });
 http.listen(port, () => {
-  console.log('listening on *:' + port);
+    console.log('listening on *:' + port);
 });

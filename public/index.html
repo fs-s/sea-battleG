@@ -8,16 +8,20 @@
 </head>
 
 <body>
-    <button class="leave-game-btn" id="newGame">Leave game</button>
-    <h1>Welcome to Sea Battle game</h1>
-    <div class="mainDiv">
-        <div class="user-list">
-            <h1>user</h1>
-        </div>
-        <div class="chat-box">
-            <h1>chat</h1>
-            <ul id="message-container"></ul>
-            <input class="input-text" id="message-box" type="text">
+    <div class="container">
+        <h1>Welcome to Sea Battle game</h1>
+        <div class="mainDiv">
+            <div class="user-list">
+                <h1>user</h1>
+            </div>
+            <div class="chat-box">
+                <h1>chat</h1>
+                <ul id="message-container"></ul>
+                <div class="message-footer">
+                    <input class="input-text" id="message-box" type="text">
+                    <button class="leave-game-btn" id="newGame">Leave game</button>
+                </div>
+            </div>
             <script src="/socket.io/socket.io.js"></script>
             <script src="/public/js/chat.js"></script>
         </div>
@@ -26,13 +30,41 @@
 
 </html>
 <style>
+    .message-footer {
+        display: flex
+    }
+
+    .mainDiv {
+        grid-column-gap: 20px;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 400px 1fr;
+    }
+
+    .leave-game-btn {
+        display: flex;
+        bottom: 0;
+    }
+
+    .input-text {
+        padding-right: 100px;
+    }
+
     body {
+        margin: 0;
+        height: 100vh;
         background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
     }
 
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
     #message-container {
+        flex: 1;
         overflow-y: scroll;
-        height: 240px;
     }
 
     li {
@@ -52,21 +84,15 @@
     }
 
     .chat-box {
-        position: absolute;
-        right: 0;
-        width: 800px;
-        height: 100%;
+        height: calc(100vh - 106px);
         border: 3px solid blue;
-        z-index: 1;
         overflow-x: hidden;
         padding-top: 20px;
+        display: flex;
+        flex-direction: column;
     }
 
     .user-list {
-        position: absolute;
-        left: 0;
-        width: 400px;
-        height: 100%;
         border: 3px solid red;
         z-index: 1;
         overflow-x: hidden;
