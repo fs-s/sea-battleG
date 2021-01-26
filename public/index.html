@@ -19,7 +19,7 @@
                 <ul id="message-container"></ul>
                 <div class="message-footer">
                     <input class="input-text" id="message-box" type="text">
-                    <button class="leave-game-btn" id="newGame">Leave game</button>
+                    <button class="join-game-btn" id="newGame">Join game</button>
                 </div>
             </div>
             <script src="/socket.io/socket.io.js"></script>
@@ -30,6 +30,25 @@
 
 </html>
 <style>
+    button:hover {
+        background-color: gray;
+        color: white;
+    }
+
+    button {
+        background-color: white;
+        border: none;
+        transition-duration: 0, 5s;
+        cursor: pointer;
+        font-size: 16px;
+        display: inline;
+        border-radius: 10px;
+    }
+
+    h1 {
+        color: black;
+    }
+
     .message-footer {
         display: flex
     }
@@ -41,7 +60,7 @@
         grid-template-columns: 400px 1fr;
     }
 
-    .leave-game-btn {
+    .join-game-btn {
         display: flex;
         bottom: 0;
     }
@@ -53,7 +72,7 @@
     body {
         margin: 0;
         height: 100vh;
-        background: linear-gradient(to left, #4A35C2, rgba(255, 0, 212, .527)), #485fed;
+        background: linear-gradient(to left, #4A35C2, rgba(71, 160, 174, 100)), #47a0ae;
     }
 
     .container {
@@ -68,8 +87,8 @@
     }
 
     li {
-        background-color: cornflowerblue;
-        color: white;
+        background-color: dimgray;
+        color: aquamarine;
         border-radius: 0.75rem;
         margin: 10px 0px;
         padding: 5px 10px;
@@ -85,7 +104,7 @@
 
     .chat-box {
         height: calc(100vh - 106px);
-        border: 3px solid blue;
+        border: 3px solid black;
         overflow-x: hidden;
         padding-top: 20px;
         display: flex;
@@ -93,7 +112,7 @@
     }
 
     .user-list {
-        border: 3px solid red;
+        border: 3px solid black;
         z-index: 1;
         overflow-x: hidden;
         padding-top: 20px;
