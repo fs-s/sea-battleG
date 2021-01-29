@@ -59,7 +59,28 @@ app.get("/login", (req, res) => {
     res.sendFile(__dirname + "/public/login.html");
 });
 
+app.post("/register", (req, res) => {
+    let isSuccess = false;
+    redisClient.hgetall('users', (err, result) =>{
+        if ( result ) {
+            if( req.body.username in result) {
+                isSuccess = true;
+            } else {
+                isSuccess = true;
+            }
+        } else {
+            isSuccess = true;
+        }
 
+        if (isSuccess) {
+            redisClient.hset('users', req.body.username, req.body.password);
+            res.json({response: 'Success'})
+            console.log('success');
+        } else {
+            console.log('user exists!')
+        }
+    })
+})
 
 app.get("/", (req, res) => {
     sess = req.session;
@@ -102,7 +123,7 @@ io.on('connection', (socket) => {
         });
     });
     io.emit('initGameBoard', { 'humanGameBoard': seaBattle.gameBoard.human })
-    io.on('newGame', (p) => {
+    socket.on('newGame', (p) => {
         console.log(p)
         io.emit('initGameBoard', { 'humanGameBoard': seaBattle.gameBoard.human })
     })
